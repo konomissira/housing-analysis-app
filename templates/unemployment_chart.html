@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>Unemployment charset</title>
+</head>
+<body>
+  <canvas id="unemploymentChart" width="400" height="200"></canvas>
+  <!-- Define the quarters variable -->
+  <script>
+    var quartersData = {{ quarters|tojson|safe }};
+    var londonData = {{ london|tojson|safe }};
+    var ukData = {{ uk|tojson|safe }};
+    
+    var ctx = document.getElementById('unemploymentChart').getContext('2d');
+    var unemploymentChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: quartersData,
+            datasets: [{
+                label: 'London',
+                data: londonData,
+                borderColor: 'blue',
+                fill: false
+            }, {
+                label: 'UK',
+                data: ukData,
+                borderColor: 'red',
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: false
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
