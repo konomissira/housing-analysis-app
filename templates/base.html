@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>UK-London: Housing Price Index | Unemployment Rate</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">UK-London: Housing Price Index | Unemployment Rate</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/unemployment-chart">Unemployment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/housing">Housing Index</a>
+                </li>
+                <!-- Add other links as necessary -->
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Add any common scripts you want to load on every page here -->
+</body>
+</html>

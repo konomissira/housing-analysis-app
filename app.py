@@ -3,26 +3,29 @@ from visualization import create_housing_price_chart
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 
-
-
-
-
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Welcome to the data analysis web app!"
+    return render_template("home.html")
 
 @app.route('/housing')
 def housing():
-    # Here we're using dummy data for demonstration purposes.
-    data = [
-        {'year': 1995, 'avg_london_value': 74330.86, 'avg_uk_value': 199735.06},
-        # ... You'll add other data points here, fetched from your database or any other source.
-    ]
-    fig = create_housing_price_chart(data)
-    fig_div = fig.to_html(full_html=False)
-    return render_template('chart.html', chart_div=fig_div)
+    conn = psycopg2.connect(dbname="londondata", user="mahamadoucamara", password="", host="localhost")
+    cur = conn.cursor()
+    cur.execute("""SELECT EXTRACT(YEAR FROM "Month") AS year, AVG(housing_price_index."London_Value") AS avg_london_value, 
+                AVG(housing_price_index."UK_Value") AS avg_uk_value FROM housing_price_index 
+                GROUP BY year 
+                ORDER BY year;""")
+    
+    rows = cur.fetchall()
+    years = [int(row[0]) for row in rows]
+    avg_london_values = [float(row[1]) for row in rows]
+    avg_uk_values = [float(row[2]) for row in rows]
+
+
+    
+    return render_template('housing_chart.html', years=years, avg_london_values=avg_london_values, avg_uk_values=avg_uk_values)
 
 @app.route('/unemployment-chart')
 def unemployment_chart():
