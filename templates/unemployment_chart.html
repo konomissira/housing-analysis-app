@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -16,9 +16,9 @@
 
   {% block content %}
       <!-- Specific content for unemployment_chart.html goes here -->
-      <h2>Unemployment Chart</h2>
+      <h1 class="center">Unemployment Rate UK-London</h1>
       <!-- Your Chart.js code and other specific content for this page -->
-      <canvas id="unemploymentChart" width="400" height="200"></canvas>
+      <canvas id="unemploymentChart"></canvas>
   <!-- Define the quarters variable -->
       <script>
         var quartersData = {{ quarters|tojson|safe }};
@@ -43,6 +43,8 @@
                 }]
             },
             options: {
+              responsive: true,
+              maintainAspectRatio: false,
                 scales: {
                     x: {
                         beginAtZero: false
@@ -54,6 +56,7 @@
             }
         });
     </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   {% endblock %}
 
 
