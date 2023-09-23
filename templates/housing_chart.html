@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -15,8 +15,6 @@
   {% extends "base.html" %}
 
   {% block content %}
-      <h2>Housing Chart</h2>
-      <canvas id="housingChart" width="400" height="200"></canvas>
 
       <script>
         let years = {{ years|tojson|safe }};
@@ -42,6 +40,7 @@
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 title: {
                     display: true,
                     text: 'Housing Price Index'
@@ -65,7 +64,8 @@
             }
         });
 
-    </script>
+      </script>
+      <script src="{{ url_for('static', filename='script.js') }}"></script>     
   {% endblock %}
 </body>
 </html>
