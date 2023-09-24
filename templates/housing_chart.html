@@ -16,11 +16,6 @@
 
   {% block content %}
 
-      <!-- Specific content for housing_chart.html goes here -->
-      <h1 class="center">Housing Price Index UK-London</h1>
-      <!-- Your Chart.js code and other specific content for this page -->
-      <canvas id="housingChart"></canvas>
-
       <script>
         let years = {{ years|tojson|safe }};
         let avgLondonValues = {{ avg_london_values|tojson|safe }};
