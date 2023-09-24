@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="{{url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
   <title>Home page</title>
@@ -13,6 +15,27 @@
   {% extends "base.html" %}
 
   {% block content %}
+<<<<<<< HEAD
+      <div id="main-home">
+        <h1>What About Data In London and the UK ?</h1>
+      <a href="/housing" class="icon-link">
+        <div class="icon-box">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+    </a>
+    
+    <a href="/unemployment-chart" class="icon-link">
+        <div class="icon-box">
+          <i class="fa fa-briefcase" aria-hidden="true"></i>
+        </div>
+    </a>
+    
+      </div>
+      <!-- Any other content you want on the home page -->
+
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+=======
+>>>>>>> origin/main
   {% endblock %}
 
   
