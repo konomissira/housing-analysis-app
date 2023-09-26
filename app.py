@@ -2,8 +2,17 @@ from flask import Flask, render_template
 from visualization import create_housing_price_chart
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
+import os
+
+dbname   = os.environ.get('dbname')
+user     = os.environ.get('user')
+password = os.environ.get('password')
+host     = os.environ.get('host')
 
 app = Flask(__name__)
+
+print(dbname, user, password, host)
+
 
 @app.route('/')
 def home():
@@ -11,7 +20,7 @@ def home():
 
 @app.route('/housing')
 def housing():
-    conn = psycopg2.connect(dbname="londondata", user="mahamadoucamara", password="", host="localhost")
+    conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
     cur = conn.cursor()
     cur.execute("""SELECT EXTRACT(YEAR FROM "Month") AS year, AVG(housing_price_index."London_Value") AS avg_london_value, 
                 AVG(housing_price_index."UK_Value") AS avg_uk_value FROM housing_price_index 
@@ -29,7 +38,7 @@ def housing():
 
 @app.route('/unemployment-chart')
 def unemployment_chart():
-    conn = psycopg2.connect(dbname="londondata", user="mahamadoucamara", password="", host="localhost")
+    conn = psycopg2.connect(dbname='mantou60', user='chobre99@kono', password='chobre51!!', host='kono.postgres.database.azure.com')
     cur = conn.cursor()
 
     cur.execute("""SELECT "Quarter", AVG("labour_market"."London_Unemployment") AS avg_london_unemployment, 
