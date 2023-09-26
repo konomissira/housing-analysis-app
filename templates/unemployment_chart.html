@@ -15,6 +15,11 @@
   {% extends "base.html" %}
 
   {% block content %}
+      <!-- Specific content for unemployment_chart.html goes here -->
+      <h1 class="center">Unemployment Rate UK-London</h1>
+      <!-- Your Chart.js code and other specific content for this page -->
+      <canvas id="unemploymentChart"></canvas>
+  <!-- Define the quarters variable -->
       <script>
         var quartersData = {{ quarters|tojson|safe }};
         var londonData = {{ london|tojson|safe }};
