@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'about-data-in-london-and--uk'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B4DC5597F17144EAB051FE85A4A22E81 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9D91B15CE1AA46FB9DDAEA191D06F21C }}
