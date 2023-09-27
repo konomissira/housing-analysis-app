@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from visualization import create_housing_price_chart
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 import os
